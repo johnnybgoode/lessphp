@@ -36,6 +36,7 @@ class lessc {
 		'*' => 1,
 		'/' => 1,
 		'%' => 1,
+		'\\' => 1,
 	);
 	static private $operatorString; // regex string to match any of the operators
 
@@ -1079,6 +1080,10 @@ class lessc {
 		case '/':
 			if ($right[1] == 0) throw new exception('parse error: divide by zero');
 			$value = $left[1] / $right[1];
+			break;
+		case '\\':
+			if ($right[1] == 0) throw new exception('parse error: divide by zero');
+			$value = ( int ) ( $left[1] / $right[1] );
 			break;
 		default:
 			throw new exception('parse error: unknown number operator: '.$op);	
