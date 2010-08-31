@@ -95,6 +95,21 @@ pre {
     font-family: "Some " + "Family; // evaluates to "Some Family"
 }</pre>
 
+	<p>Integer division may be used by substituting [ \ ] for the normal division operator [ / ]. This allows for round numbers to be obtained in expressions, simplifying columns and other layout schemes. 
+	NOTE: Integer division will truncate floating point numbers and may not always yeild expected results, so be careful!</p>
+	<p>See below for example: </p>
+<pre class="code">container {
+	@total_width: 700px;
+	@num_cols: 3;
+	@padding: 5px;
+	
+	@col_width: ( @total_width - ( ( 2 * @num_cols ) * @padding ) ) \ @num_cols;
+
+	.col_left { width: @col_width; }
+	.col_middle { width: @col_width; }
+	.col_right { width: @col_width; }
+
+}</pre>
 	<p>It is important to notice that in the example above the output will print the margin property twice. 
 A single property name can hold more than one value; older values are not overwritten.</p>
 
